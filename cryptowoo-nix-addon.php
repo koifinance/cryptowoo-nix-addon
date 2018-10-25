@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'CWNIX_VER', '1.0' );
 define( 'CWNIX_FILE', __FILE__ );
+define('CWNIX_PLUGIN_PATH', plugins_url(basename(plugin_dir_path(__FILE__)), basename(__FILE__)) . '/');
 $cw_dir = WP_PLUGIN_DIR . "/cryptowoo";
 //$cw_license_path = "$cw_dir/am-license-menu.php";
 
@@ -31,6 +32,9 @@ $cw_dir = WP_PLUGIN_DIR . "/cryptowoo";
 
 	CWNIX_License_Menu::instance( CWNIX_FILE, 'CryptoWoo NIX Add-on', CWNIX_VER, 'plugin', 'https://www.cryptowoo.com/' );
 }*/
+
+// NIX Font
+wp_enqueue_style('aw-cryptocoins', CWNIX_PLUGIN_PATH.'assets/fonts/nixfont/nixfont.css');
 
 /**
  * Plugin activation
@@ -156,12 +160,23 @@ if ( cwnix_hd_enabled() ) {
  */
 function cwnix_coin_icon_color() { ?>
     <style type="text/css">
-        i.cc.NIX:before, i.cc.NIX-alt:before {
-            content: "\e92c";
+        i.cc.NIX:before, i.cc.NIX-alt:before, i.icon-NIX:before {
+            content: "\e9f5";
         }
 
-        i.cc.NIX, i.cc.NIX-alt {
+        i.cc.NIX, i.cc.NIX-alt, i.icon-NIX {
             color: #2f60c0;
+            font-family: 'nixfont' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
     </style>
 <?php }
@@ -1123,7 +1138,7 @@ Redux::setField( 'cryptowoo_payments', array(
 		'type'       => 'section',
 		'title'      => __( 'NIX', 'cryptowoo-hd-wallet-addon' ),
 		//'required' => array('testmode_enabled','equals','0'),
-		'icon'       => 'cc-NIX',
+		'icon'       => 'icon-NIX',
 		//'subtitle' => __('Use the field with the correct prefix of your Litecoin MPK. The prefix depends on the wallet client you used to generate the key.', 'cryptowoo-hd-wallet-addon'),
 		'indent'     => true,
 	) );
