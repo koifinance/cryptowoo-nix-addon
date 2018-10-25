@@ -9,7 +9,7 @@
   font-style: normal;
 }
 
-.cc .NIX {
+.NIX, .NIX-alt {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'nixfont' !important;
   speak: none;

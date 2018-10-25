@@ -22,6 +22,7 @@ define( 'CWNIX_VER', '1.0' );
 define( 'CWNIX_FILE', __FILE__ );
 define('CWNIX_PLUGIN_PATH', plugins_url(basename(plugin_dir_path(__FILE__)), basename(__FILE__)) . '/');
 $cw_dir = WP_PLUGIN_DIR . "/cryptowoo";
+define('CWNIX_PLUGIN_PATH', $cw_dir);
 //$cw_license_path = "$cw_dir/am-license-menu.php";
 
 // Load the plugin update library if it is not already loaded
@@ -33,8 +34,9 @@ $cw_dir = WP_PLUGIN_DIR . "/cryptowoo";
 	CWNIX_License_Menu::instance( CWNIX_FILE, 'CryptoWoo NIX Add-on', CWNIX_VER, 'plugin', 'https://www.cryptowoo.com/' );
 }*/
 
+
 // NIX Font
-wp_enqueue_style('aw-cryptocoins', CWNIX_PLUGIN_PATH.'assets/fonts/nixfont/nixfont.css');
+wp_enqueue_style('nixfont', CWNIX_PLUGIN_PATH.'assets/fonts/nixfont/nixfont.css');
 
 /**
  * Plugin activation
